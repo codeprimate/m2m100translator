@@ -22,5 +22,15 @@ Learn More:
 ./start.sh
 ```
 
+# Using Docker
 
+```
+# Download LLM model from HuggingFace to prevent redundant downloading during development
+./download.sh
 
+# Build
+docker build -t translator .
+
+# Start the container and listen on port 3000
+docker run -p 3000:80 translator
+```

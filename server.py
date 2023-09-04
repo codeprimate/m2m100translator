@@ -1,4 +1,5 @@
 import os
+import time
 from flask import Flask, render_template, request
 from transformers import M2M100ForConditionalGeneration, M2M100Tokenizer
 
@@ -18,20 +19,22 @@ class LanguageModel:
 
 app = Flask(__name__)
 
-print("*** Loading Model...", flush=True)
+print("*** Loading Model...", flush=True, end="")
 app.language_model = LanguageModel()
-print("*** READY", flush=True)
+print("READY", flush=True)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'GET':
-        return render_template('index.html', src_lang='en', out_lang='en', text='', translated_text='', languages=languages)
+        return render_template('index.html', src_lang='en', out_lang='en', text='', translated_text='', elapsed=0, languages=languages)
     elif request.method == 'POST':
+        start_time = time.time()
         src_lang = request.form.get('src_lang')
         out_lang = request.form.get('out_lang')
         text = request.form.get('text')
         translated_text = app.language_model.translate(src_lang, out_lang, text)
-        return render_template('index.html', src_lang=src_lang, out_lang=out_lang, text=text, translated_text=translated_text, languages=languages)
+        elapsed = int(time.time() - start_time)
+        return render_template('index.html',src_lang=src_lang, out_lang=out_lang, text=text, elapsed=elapsed, translated_text=translated_text, languages=languages)
 
 if __name__ == '__main__':
     app.run()

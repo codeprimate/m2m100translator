@@ -47,6 +47,9 @@ form label {
                 <div class="col-6 mt-1">
                   <label for="translated_text">Translated:</label>
                   <textarea id="translated_text" name="translated_text" rows="4" cols="50" readonly onclick="this.select();" class="form-control">{{ translated_text }}</textarea>
+                  <div class="text-muted fst-italic text-end">
+                    <small>({{ elapsed }}s)</small>
+                  </div>
                 </div>
               </div>
             </div>
@@ -62,9 +65,15 @@ form label {
 
     <script>
       var submitBtn = document.getElementById('submit')
-      submitBtn.onclick = function() {
-        submitBtn.style.opacity = '0.5'
-      }
+      var src_select = document.getElementById('src_lang')
+      var out_select = document.getElementById('out_lang')
+      var text = document.getElementById('text')
+      var translated_text = document.getElementById('translated_text')
+
+      submitBtn.onclick = function() { submitBtn.style.opacity = '0.5' }
+      src_select.onchange = function() { text.value = ''; translated_text.value = '' }
+      out_select.onchange = function() { translated_text.value = '' }
+      text.onchange = function() { translated_text.value = '' }
     </script>
   </body>
 </html>

@@ -17,6 +17,8 @@ class LanguageModel:
         return self.tokenizer.batch_decode(generated_tokens, skip_special_tokens=True)[0]
 
 app = Flask(__name__)
+
+print("*** Loading Model...", flush=True)
 app.language_model = LanguageModel()
 
 @app.route('/', methods=['GET', 'POST'])

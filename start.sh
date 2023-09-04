@@ -1,5 +1,3 @@
 #!/bin/bash
 
-./download.sh
-pip install -r requirements.txt
-python server.py
+FLASK_APP=server.py python -m flask run 

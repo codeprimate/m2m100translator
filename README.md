@@ -10,15 +10,17 @@ Learn More:
 
 * Python
 * pip
-* Git and Git LFS
+* curl
 
 # Usage
 
-The `server.sh` script will automatically download python dependencies and the language model from Hugging Face.
+First, perform setup to download dependencies:
 
-NOTE: first run will take several minutes to download files.
+`./setup.sh`
 
-Run `./server.sh`
+Then, afterwards, start:
+
+`./start.sh`
 
 
 

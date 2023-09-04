@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Translation UI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+form label {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Translator</h1>
+      <p class="lead">Powered by Facebook <a href="https://huggingface.co/facebook/m2m100_1.2B">M2M100</a></p>
+
+      <div class="row">
+        <div class="col">
+          <form action="/" method="post">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-6">
+                  <label for="src_lang">From:</label>
+                  <select id="src_lang" name="src_lang" class="form-control">
+                    {% for lang in languages %}
+                    <option value="{{ lang[1] }}" {% if lang[1] == src_lang %}selected{% endif %}>{{ lang[0] }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="col-6">
+                  <label for="out_lang">To:</label>
+                  <select id="out_lang" name="out_lang" class="form-control">
+                    {% for lang in languages %}
+                    <option value="{{ lang[1] }}" {% if lang[1] == out_lang %}selected{% endif %}>{{ lang[0] }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6 mt-1">
+                  <div class="form-group">
+                    <label for="text">Source:</label>
+                    <textarea id="text" name="text" rows="4" cols="50" class="form-control">{{ text }}</textarea>
+                  </div>
+                </div>
+                <div class="col-6 mt-1">
+                  <label for="translated_text">Translated:</label>
+                  <textarea id="translated_text" name="translated_text" rows="4" cols="50" readonly onclick="this.select();" class="form-control">{{ translated_text }}</textarea>
+                </div>
+              </div>
+            </div>
+            <input type="submit" value="Translate" class="btn btn-primary mt-2">
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>

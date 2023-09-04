@@ -1,0 +1,6 @@
+flask
+transformers
+torch
+tensorflow
+flax
+sentencepiece

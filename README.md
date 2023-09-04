@@ -30,10 +30,10 @@ Learn More:
 ./download.sh
 
 # Build
-docker build -t translator .
+docker build -t codeprimate/translator .
 
 # Start the container and listen on port 3000
-docker run -p 3000:80 translator
+docker run -p 3000:80 codeprimate/translator
 ```
 
 # License

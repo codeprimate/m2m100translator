@@ -14,13 +14,13 @@ Learn More:
 
 # Usage
 
-First, perform setup to download dependencies:
+```
+# First, perform setup to download dependencies. Do this only once.
+./setup.sh
 
-`./setup.sh`
-
-Then, afterwards, start:
-
-`./start.sh`
+# Then start
+./start.sh
+```
 
 
 

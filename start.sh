@@ -1,3 +1,5 @@
 #!/bin/bash
 
-FLASK_APP=server.py python -m flask run 
+PORT=${PORT:-3000}
+
+gunicorn --bind 0.0.0.0:$PORT wsgi:app

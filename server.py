@@ -20,6 +20,7 @@ app = Flask(__name__)
 
 print("*** Loading Model...", flush=True)
 app.language_model = LanguageModel()
+print("*** READY", flush=True)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -33,5 +34,4 @@ def index():
         return render_template('index.html', src_lang=src_lang, out_lang=out_lang, text=text, translated_text=translated_text, languages=languages)
 
 if __name__ == '__main__':
-    port = int(os.getenv('PORT', 5000))
-    app.run(port=port)
+    app.run()

@@ -4,3 +4,4 @@ torch
 tensorflow
 flax
 sentencepiece
+gunicorn
